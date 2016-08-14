@@ -8,7 +8,23 @@ defmodule Cielito.BotController do
     render(conn, "available_dates.json", message: message, context: context)
   end
 
-  def answer(conn, %{"result" => %{"parameters" => %{"number" => number, "phone-number" => phone_number}}}) do
+  def answer(conn, %{"result" => %{"contexts" => [%{"parameters" => %{"given-name" => name, "phone" => phone}}|_]}}) do
+    patient = Repo.get_by(Patient, phone: phone)
+    case patient do
+      nil ->
+        [message, context] = PatientServices.create(phone)
+        render(conn, "registration_step_2.json", message: message, context: context)
+      _ ->
+        IO.puts name
+        [first_name, last_name | _] = String.split(name, " ")
+        patient = PatientServices.update(patient, %{first_name: first_name, last_name: last_name})
+        message = "¿Cuáles son tus apellidos, #{patient.first_name}? Ej. Bustillos González"
+        context = [%{name: "registration_step_3", lifespan: 5, parameters: %{phone: patient.phone}}]
+        render(conn, "answer.json", message: message, context: context)
+    end
+  end
+
+  def answer(conn, %{"result" => %{"parameters" => %{"number" => number, "phone" => phone_number}}}) do
     phone = BotServices.number_normalizer(number, phone_number)
     patient = Repo.get_by(Patient, phone: phone)
     case patient do
