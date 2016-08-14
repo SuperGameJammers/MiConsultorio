@@ -1,6 +1,7 @@
 /* This file is for your main application css. */
 body{
   margin: 0;
+  background: #e7fcee;
 }
 
 header .navbar-default{
@@ -38,4 +39,34 @@ header .user-container p{
 
 .user-info img{
   width: 50px !important;
+}
+
+.btn-green{
+  background-color: #6edba2;
+  border: none;
+  color: #e7fcee;
+}
+
+.btn-green:hover{
+  background-color: #5EB889;
+  border: none;
+  color: #e7fcee;
+}
+
+.btn-red{
+  background-color: #DB6464;
+  color: #e7fcee;
+}
+.btn-red:hover{
+  background-color: #C95C5C;
+  color: #e7fcee;
+}
+
+.btn-blue{
+  background-color: #62d9e5;
+  color: #e7fcee;
+}
+.btn-blue:hover{
+  background-color: #50B7C1;
+  color: #e7fcee;
 }

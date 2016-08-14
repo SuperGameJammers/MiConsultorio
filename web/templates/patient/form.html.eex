@@ -6,36 +6,36 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :first_name, class: "control-label" %>
+    <%= label f, "Nombre", class: "control-label" %>
     <%= text_input f, :first_name, class: "form-control" %>
     <%= error_tag f, :first_name %>
   </div>
 
   <div class="form-group">
-    <%= label f, :last_name, class: "control-label" %>
+    <%= label f, "Apellido", class: "control-label" %>
     <%= text_input f, :last_name, class: "form-control" %>
     <%= error_tag f, :last_name %>
   </div>
 
   <div class="form-group">
-    <%= label f, :phone, class: "control-label" %>
+    <%= label f, "Telefono", class: "control-label" %>
     <%= text_input f, :phone, class: "form-control" %>
     <%= error_tag f, :phone %>
   </div>
 
   <div class="form-group">
-    <%= label f, :gender, class: "control-label" %>
+    <%= label f, "Genero", class: "control-label" %>
     <%= text_input f, :gender, class: "form-control" %>
     <%= error_tag f, :gender %>
   </div>
 
   <div class="form-group">
-    <%= label f, :age, class: "control-label" %>
+    <%= label f, "Edad", class: "control-label" %>
     <%= number_input f, :age, class: "form-control" %>
     <%= error_tag f, :age %>
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit "Guardar", class: "btn btn-primary btn-green" %>
   </div>
 <% end %>

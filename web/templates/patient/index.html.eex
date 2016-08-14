@@ -1,14 +1,13 @@
-<h2>Listing patients</h2>
+<h2>Pacientes</h2>
 
 <table class="table">
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Phone</th>
-      <th>Gender</th>
-      <th>Age</th>
-
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Telefono</th>
+      <th>Genero</th>
+      <th>Edad</th>
       <th></th>
     </tr>
   </thead>
@@ -22,13 +21,13 @@
       <td><%= patient.age %></td>
 
       <td class="text-right">
-        <%= link "Show", to: patient_path(@conn, :show, patient), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: patient_path(@conn, :edit, patient), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: patient_path(@conn, :delete, patient), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "Ver Historial", to: patient_path(@conn, :show, patient), class: "btn btn-blue btn-xs" %>
+        <%= link "Editar", to: patient_path(@conn, :edit, patient), class: "btn btn-default btn-xs" %>
+        <%= link "Borrar", to: patient_path(@conn, :delete, patient), method: :delete, data: [confirm: "Estás Seguro?"], class: "btn btn-red btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New patient", to: patient_path(@conn, :new) %>
+<%= link "Nuevo Paciente", class: "btn btn-green", to: patient_path(@conn, :new) %>
