@@ -1,7 +1,7 @@
 defmodule Cielito.BotController do
   use Cielito.Web, :controller
 
-  def test(conn, params) do
-    render(conn, "test.json")
+  def test(conn, %{"result" => %{"parameters" => %{"appointment" => "cita"}}}) do
+    render(conn, "available_dates.json")
   end
 end
