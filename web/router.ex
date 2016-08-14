@@ -23,6 +23,8 @@ defmodule Cielito.Router do
   scope "/api", Cielito do
     pipe_through :api
 
-    post "/doctorbot", BotController, :test
+    post "/doctorbot", BotController, :answer
+
+    resources "/patients", PatientController, except: [:new, :edit]
   end
 end
