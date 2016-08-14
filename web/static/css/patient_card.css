@@ -1,0 +1,34 @@
+.new-patient-title-container{
+  text-align: center;
+  margin: 0em 0 4em 0;
+  color: #6edba2;
+}
+
+.new-patient-container{
+  margin: 1em 0;
+}
+
+.patient-card-container{
+  background: #a0e0d4;
+  padding: 1em;
+  border-radius: 8px;
+  color: #132b20;
+  text-align: center;
+  margin: 2em 0;
+}
+
+.patient-title-container .title{
+  margin: 0;
+}
+.patient-title-container .phone{
+  margin: 0.5em 0;
+}
+
+.patient-card-container .age-container{
+  margin: 1em 0;
+  font-weight: 600;
+}
+
+.patient-card-container .age-container span{
+  font-weight: 200;
+}

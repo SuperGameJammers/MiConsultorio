@@ -1,33 +1,35 @@
-<h2>Pacientes</h2>
+<div class="new-patient-title-container">
+  <h1 class="">Pacientes</h1>
+</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Telefono</th>
-      <th>Genero</th>
-      <th>Edad</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="new-patient-container">
+  <%= link "Nuevo Paciente", class: "btn btn-green", to: patient_path(@conn, :new) %>
+</div>
+
+
 <%= for patient <- @patients do %>
-    <tr>
-      <td><%= patient.first_name %></td>
-      <td><%= patient.last_name %></td>
-      <td><%= patient.phone %></td>
-      <td><%= patient.gender %></td>
-      <td><%= patient.age %></td>
+    <div class="patient-card-container">
+      <div class="patient-title-container">
+        <h3 class="title"><%= patient.first_name %> <%= patient.last_name %>
+          <%= case patient.gender do %>
+            <% "masculino" -> %>
+              <img src="/images/boy_icon.png" alt="">
+            <% "femenino" -> %>
+              <img src="/images/girl_icon.png" alt="">
+            <% _ -> %>
+          <% end %>
+        </h3>
+        <h6 class="phone"><%= patient.phone %></h6>
+      </div>
 
-      <td class="text-right">
+      <div class="age-container">
+        <p>Edad: <span><%= patient.age %></span></p>
+      </div>
+
+      <div class="buttons-container">
         <%= link "Ver Historial", to: patient_path(@conn, :show, patient), class: "btn btn-blue btn-xs" %>
         <%= link "Editar", to: patient_path(@conn, :edit, patient), class: "btn btn-default btn-xs" %>
         <%= link "Borrar", to: patient_path(@conn, :delete, patient), method: :delete, data: [confirm: "Estás Seguro?"], class: "btn btn-red btn-xs" %>
-      </td>
-    </tr>
+      </div>
+    </div>
 <% end %>
-  </tbody>
-</table>
-
-<%= link "Nuevo Paciente", class: "btn btn-green", to: patient_path(@conn, :new) %>
