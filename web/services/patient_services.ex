@@ -7,7 +7,7 @@ defmodule Cielito.PatientServices do
     case Repo.insert(changeset) do
       {:ok, patient} ->
         message = "¡Gracias! Ayúdame a registrarte: ¿cuál es tu nombre? Ej. Alejandro"
-        context = [%{name: "registration-step-2", lifespan: 5, parameters: %{}}]
+        context = [%{name: "registration-step-2", lifespan: 5, parameters: %{phone: patient.phone}}]
         [message, context]
     end
   end
