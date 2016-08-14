@@ -15,9 +15,12 @@ defmodule Cielito.Router do
 
   scope "/", Cielito do
     pipe_through :browser # Use the default browser stack
-
     get "/", PageController, :index
+    get "/pacientes", PatientController, :index
+    resources "/patients", PatientController
   end
+
+
 
   # Other scopes may use custom stacks.
   scope "/api", Cielito do

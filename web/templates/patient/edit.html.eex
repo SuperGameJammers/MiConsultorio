@@ -1,0 +1,6 @@
+<h2>Editar paciente <span>"<%= @patient.first_name %> <%= @patient.last_name %>"</span></h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: patient_path(@conn, :update, @patient) %>
+
+<%= link "Volver", class: "btn btn-default", to: patient_path(@conn, :index) %>
