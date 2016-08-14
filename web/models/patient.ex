@@ -5,7 +5,7 @@ defmodule Cielito.Patient do
     field :first_name, :string
     field :last_name, :string
     field :phone, :string
-    field :gender, :string
+    field :gender, :string, default: "masculino"
     field :age, :integer
 
     timestamps()

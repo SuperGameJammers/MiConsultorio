@@ -11,20 +11,14 @@
     <div class="patient-card-container">
       <div class="patient-title-container">
         <h3 class="title"><%= patient.first_name %> <%= patient.last_name %>
-          <%= case patient.gender do %>
-            <% "masculino" -> %>
-              <img src="/images/boy_icon.png" alt="">
-            <% "femenino" -> %>
-              <img src="/images/girl_icon.png" alt="">
-            <% _ -> %>
-          <% end %>
+          <img src="/images/boy_icon.png" alt="">
         </h3>
         <h6 class="phone"><%= patient.phone %></h6>
       </div>
 
-      <div class="age-container">
+      <!--<div class="age-container">
         <p>Edad: <span><%= patient.age %></span></p>
-      </div>
+      </div>-->
 
       <div class="buttons-container">
         <%= link "Ver Historial", to: patient_path(@conn, :show, patient), class: "btn btn-blue btn-xs" %>
