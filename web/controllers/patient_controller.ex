@@ -5,28 +5,36 @@ defmodule Cielito.PatientController do
 
   def index(conn, _params) do
     patients = Repo.all(Patient)
-    render(conn, "index.json", patients: patients)
+    render(conn, "index.html", patients: patients)
+  end
+
+  def new(conn, _params) do
+    changeset = Patient.changeset(%Patient{})
+    render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"patient" => patient_params}) do
     changeset = Patient.changeset(%Patient{}, patient_params)
 
     case Repo.insert(changeset) do
-      {:ok, patient} ->
+      {:ok, _patient} ->
         conn
-        |> put_status(:created)
-        |> put_resp_header("location", patient_path(conn, :show, patient))
-        |> render("show.json", patient: patient)
+        |> put_flash(:info, "Patient created successfully.")
+        |> redirect(to: patient_path(conn, :index))
       {:error, changeset} ->
-        conn
-        |> put_status(:unprocessable_entity)
-        |> render(Cielito.ChangesetView, "error.json", changeset: changeset)
+        render(conn, "new.html", changeset: changeset)
     end
   end
 
   def show(conn, %{"id" => id}) do
     patient = Repo.get!(Patient, id)
-    render(conn, "show.json", patient: patient)
+    render(conn, "show.html", patient: patient)
+  end
+
+  def edit(conn, %{"id" => id}) do
+    patient = Repo.get!(Patient, id)
+    changeset = Patient.changeset(patient)
+    render(conn, "edit.html", patient: patient, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "patient" => patient_params}) do
@@ -35,11 +43,11 @@ defmodule Cielito.PatientController do
 
     case Repo.update(changeset) do
       {:ok, patient} ->
-        render(conn, "show.json", patient: patient)
-      {:error, changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
-        |> render(Cielito.ChangesetView, "error.json", changeset: changeset)
+        |> put_flash(:info, "Patient updated successfully.")
+        |> redirect(to: patient_path(conn, :show, patient))
+      {:error, changeset} ->
+        render(conn, "edit.html", patient: patient, changeset: changeset)
     end
   end
 
@@ -50,6 +58,8 @@ defmodule Cielito.PatientController do
     # it to always work (and if it does not, it will raise).
     Repo.delete!(patient)
 
-    send_resp(conn, :no_content, "")
+    conn
+    |> put_flash(:info, "Patient deleted successfully.")
+    |> redirect(to: patient_path(conn, :index))
   end
 end

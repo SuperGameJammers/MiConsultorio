@@ -6,22 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Hello Cielito!</title>
+    <link href="https://fonts.googleapis.com/css?family=Changa+One|Nunito" rel="stylesheet">
+    <title>Mi Consultorio!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
 
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+              <img alt="Brand" src="/images/logo.png">
+            </a>
+          </div>
+          <div class="user-container navbar-header navbar-right">
+            <div class="user-info ">
+              <img src="/images/user.png" alt="">
+              <p>Dr. Morris Katzen</p>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 

@@ -1,0 +1,33 @@
+<h2>Show patient</h2>
+
+<ul>
+
+  <li>
+    <strong>First name:</strong>
+    <%= @patient.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @patient.last_name %>
+  </li>
+
+  <li>
+    <strong>Phone:</strong>
+    <%= @patient.phone %>
+  </li>
+
+  <li>
+    <strong>Gender:</strong>
+    <%= @patient.gender %>
+  </li>
+
+  <li>
+    <strong>Age:</strong>
+    <%= @patient.age %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: patient_path(@conn, :edit, @patient) %>
+<%= link "Back", to: patient_path(@conn, :index) %>

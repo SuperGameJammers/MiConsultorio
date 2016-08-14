@@ -1,1 +1,41 @@
 /* This file is for your main application css. */
+body{
+  margin: 0;
+}
+
+header .navbar-default{
+  background-color: #6edba2;
+}
+
+header .navbar-default img{
+  width: 200px;
+}
+
+header .navbar-brand{
+  height: 70px;
+}
+
+header .navbar-header{
+  height: 70px;
+}
+
+header .user-container{
+  display: flex;
+  align-items: center;
+}
+
+header .user-container p{
+  color: #e7fcee;
+  font-family: 'Nunito', sans-serif;
+  padding-left: 1em;
+}
+
+.user-info{
+  align-items: flex-end;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-info img{
+  width: 50px !important;
+}
