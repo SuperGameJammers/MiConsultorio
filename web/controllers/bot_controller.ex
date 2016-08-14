@@ -8,7 +8,7 @@ defmodule Cielito.BotController do
     render(conn, "available_dates.json", message: message, context: context)
   end
 
-  def answer(conn, %{"result" => %{"contexts" => [%{"parameters" => %{"given-name" => name, "phone" => phone}}|_]}}) do
+  def answer(conn, %{"result" => %{"contexts" => [%{"parameters" => %{"given-name.original" => name, "phone" => phone}}|_]}}) do
     patient = Repo.get_by(Patient, phone: phone)
     case patient do
       nil ->
@@ -18,7 +18,7 @@ defmodule Cielito.BotController do
         IO.puts name
         [first_name, last_name | _] = String.split(name, " ")
         patient = PatientServices.update(patient, %{first_name: first_name, last_name: last_name})
-        message = "¿Cuáles son tus apellidos, #{patient.first_name}? Ej. Bustillos González"
+        message = "¡Gracias, #{patient.first_name}! Para agendar una cita, por favor escríbele a mi asistente @drmorrisagenda. ¡Nos vemos pronto en consulta!"
         context = [%{name: "registration_step_3", lifespan: 5, parameters: %{phone: patient.phone}}]
         render(conn, "answer.json", message: message, context: context)
     end
