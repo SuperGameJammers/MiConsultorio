@@ -20,7 +20,9 @@ defmodule Cielito.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Cielito do
-  #   pipe_through :api
-  # end
+  scope "/api", Cielito do
+    pipe_through :api
+
+    post "/doctorbot", BotController, :test
+  end
 end
