@@ -3,7 +3,7 @@ defmodule Cielito.BotController do
   alias Cielito.{BotServices, PatientChangesets, Patient, PatientServices}
 
   def answer(conn, %{"result" => %{"parameters" => %{"appointment" => "cita"}}}) do
-    message = "Tengo disponibles los días ..."
+    message = "Escríbele a mi asistente @drmorrisagenda para agendar tu cita. ¡Espero verte pronto en consulta!"
     context = [%{name: "scheduling", lifespan: 5, parameters: %{}}]
     render(conn, "available_dates.json", message: message, context: context)
   end
